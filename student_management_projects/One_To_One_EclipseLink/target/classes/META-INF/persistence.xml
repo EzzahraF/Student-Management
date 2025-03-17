@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
+
+    <persistence-unit name="mapersistence" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>com.ensa.Entity.Student</class>
+        <class>com.ensa.Entity.Adresse</class>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <properties>
+            <!-- Connexion à la base de données -->
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/OneToOne"/>
+            <property name="jakarta.persistence.jdbc.user" value="nkin"/>
+            <property name="jakarta.persistence.jdbc.password" value="OfshoR@25"/>
+
+            <!-- Paramètres pour la génération des tables -->
+            <property name="eclipselink.ddl-generation" value="create-tables"/> <!-- Créer les tables si elles n'existent pas -->
+            <property name="eclipselink.ddl-generation.output-mode" value="database"/>
+
+            <!-- Optionnel: Pour enregistrer les logs de génération (utile pour le débogage) -->
+            <property name="eclipselink.logging.level" value="FINE"/>
+            <property name="eclipselink.logging.parameters" value="true"/>
+
+            <!-- Générer les fichiers DDL via JDBC (optionnel) -->
+            <property name="eclipselink.create-ddl-jdbc-file" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>
